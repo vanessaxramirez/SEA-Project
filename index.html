@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>A Catalog of the ctive Los Angeles Dodgers</title>
+    <title>A Catalog of the Active Los Angeles Dodgers</title>
     <meta name="description" content="A Catalog of the active Los Angeles Dodgers" />
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
   </head>
 
   <body>
 
     <header class="main-header">
-      <h1> Active Roster of the LA Dodgers </h1>
+      <div class = "header" >
+        <h1> 2025 Active Roster for the LA Dodgers </h1>
+        <input type="text" id="search-bar" placeholder="Search for a player..." />
+      </div>
     </header>
-
-    <div>
-      <input type="text" id="search-bar" placeholder="Search for a player..." />
-    </div>
 
     <div id="card-container"></div>
     <!-- Template for batters -->
@@ -27,15 +27,14 @@
           <div class="card-back">
             <h3 class="card-name"></h3>
             <ul>
-              <li class="card-name">Bullet Point 1</li>
-              <li class="card-position">Bullet Point 1</li>
-              <li class="card-AVG">Bullet Point 1</li>
-              <li class="card-OBP">Bullet Point 2</li>
-              <li class="card-SLG">Bullet Point 3</li>
-              <li class="card-OPS">Bullet Point 3</li>
+              <li class="card-name"> data-stat="Name"></span></li>
+              <li class="card-position"> data-stat="Position"></span></li>
+              <li class="card-AVG"> data-stat="AVG"></span></li>
+              <li class="card-OBP"> data-stat="OBP"></span></li>
+              <li class="card-SLG"> data-stat="SLG"></span></li>
+              <li class="card-OPS"> data-stat="OPS"></span></li>
             </ul>
           </div>
-        </div>
       </template>
     <!-- Template for pitchers -->
       <template id = "pitchers-template" class="card">
@@ -46,13 +45,12 @@
           <div class="card-back">
             <h3 class="card-name"></h3>
             <ul>
-              <li class="card-IP">Bullet Point 1</li>
-              <li class="card-ERA">Bullet Point 2</li>
-              <li class="card-WHIP">Bullet Point 3</li>
-              <li class="card-K">Bullet Point 3</li>
+              <li class="card-IP"> data-stat="IP"></span></li>
+              <li class="card-ERA"> data-stat="ERA"></span></li>
+              <li class="card-WHIP"> data-stat="WHIP"></span></li>
+              <li class="card-K"> data-stat="K"></span></li>
             </ul>
           </div>
-        </div>
       </template>
 
     <!-- <div class="footer">

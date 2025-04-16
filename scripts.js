@@ -359,7 +359,7 @@ function showCards()
     {
       let pitcher = pitchers[i];
       console.log('Creating card for pitcher:', pitcher.name);
-s
+
       let nextCard = pitchersTemplate.content.cloneNode(true); // Copy the template card
       editCardContent(nextCard, pitcher.name, pitcher.image, pitcher.position, pitcher.IP, pitcher.ERA, pitcher.WHIP, pitcher.K);
       cardContainer.appendChild(nextCard);
@@ -368,48 +368,87 @@ s
 
 
   // This function will fill the template card with the player's/pitcher's data
-  function editCardContent(card, name, image, position, stat1, stat2, stat3, stat4) {
-    // Set the player's name
-    const cardName = card.querySelector('.card-name');
+function editCardContent(card, name, image, position, stat1, stat2, stat3, stat4) {
+  // Set the player's name
+  const cardName = card.querySelector('.card-name');
+  if (cardName)
+  {
     cardName.textContent = name;
-  
-    // Set the player's image
-    const cardImage = card.querySelector('.card-front img');
+  }
+
+  // Set the player's image
+  const cardImage = card.querySelector('.card-front img');
+  if (cardImage)
+  {
     cardImage.src = image;
-  
-    // Set the player's position
-    const cardPosition = card.querySelector('.card-position');
-    cardPosition.textContent = position;
-  
-    // Set the player's stats
-    const stat1Element = card.querySelector('.card-AVG'); // For batters, e.g. AVG
-    stat1Element.textContent = stat1;
-  
-    const stat2Element = card.querySelector('.card-OBP'); // For batters, e.g. OBP
-    stat2Element.textContent = stat2;
-  
-    const stat3Element = card.querySelector('.card-SLG'); // For batters, e.g. SLG
-    stat3Element.textContent = stat3;
-  
-    const stat4Element = card.querySelector('.card-OPS'); // For batters, e.g. OPS
-    stat4Element.textContent = stat4;
-  
-    // If it's a pitcher, update other stats (ERA, WHIP, etc.)
-    if (stat1 === undefined) {  // This indicates we're dealing with pitchers
-      const cardIP = card.querySelector('.card-IP'); // For pitchers
-      cardIP.textContent = stat1;
-  
-      const cardERA = card.querySelector('.card-ERA'); // For pitchers
-      cardERA.textContent = stat2;
-  
-      const cardWHIP = card.querySelector('.card-WHIP'); // For pitchers
-      cardWHIP.textContent = stat3;
-  
-      const cardK = card.querySelector('.card-K'); // For pitchers
-      cardK.textContent = stat4;
+  }
+
+  // Set the player's position
+  const cardPosition = card.querySelector('.card-position');
+  if (cardPosition)
+  {
+      cardPosition.textContent = position;
+  }
+
+  // Check if we're dealing with batters or pitchers since they're in different arrays
+  const isPitcher = card.querySelector('.card-IP') !== null;
+
+  if (isPitcher) 
+  {
+    // Set pitcher stats
+    const statIP = card.querySelector('.card-IP');
+    if (statIP) 
+    {
+      statIP.textContent = stat1;
+    }
+
+    const statERA = card.querySelector('.card-ERA');
+    if (statERA) 
+    {
+      statERA.textContent = stat2;
+    }
+
+    const statWHIP = card.querySelector('.card-WHIP');
+    if (statWHIP) 
+    {
+      statWHIP.textContent = stat3;
+    }
+
+    const statK = card.querySelector('.card-K');
+    if (statK) 
+    {   
+      statK.textContent = stat4;
     }
   }
-  
+  else 
+  {
+    // Set batter stats
+    const statAVG = card.querySelector('.card-AVG');
+    if (statAVG) 
+    {
+      statAVG.textContent = stat1;
+    }
+
+    const statOBP = card.querySelector('.card-OBP');
+    if (statOBP) 
+    {
+      statOBP.textContent = stat2;
+    }
+
+    const statSLG = card.querySelector('.card-SLG');
+    if (statSLG) 
+    {
+      statSLG.textContent = stat3;
+    }
+
+    const statOPS = card.querySelector('.card-OPS');
+    if (statOPS) 
+    {
+      statOPS.textContent = stat4;
+    }
+  }
+}
+
 
 // function editCardContent(card, newTitle, newImageURL) {
 //   card.style.display = "block";
