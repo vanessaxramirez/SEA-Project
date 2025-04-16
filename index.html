@@ -1,31 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
+    <title>A Catalog of the ctive Los Angeles Dodgers</title>
+    <meta name="description" content="A Catalog of the active Los Angeles Dodgers" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
+
     <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
+      <h1> Active Roster of the LA Dodgers </h1>
     </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
-      </div>
+
+    <div>
+      <input type="text" id="search-bar" placeholder="Search for a player..." />
     </div>
+
+    <div id="card-container"></div>
+    <!-- Template for batters -->
+      <template class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="" alt="Player Image"/>
+          </div>
+          <div class="card-back">
+            <h3 class="card-name"></h3>
+            <ul>
+              <li class="card-name">Bullet Point 1</li>
+              <li class="card-position">Bullet Point 1</li>
+              <li class="card-AVG">Bullet Point 1</li>
+              <li class="card-OBP">Bullet Point 2</li>
+              <li class="card-SLG">Bullet Point 3</li>
+              <li class="card-OPS">Bullet Point 3</li>
+            </ul>
+          </div>
+        </div>
+      </template>
+    <!-- Template for pitchers -->
+    <div id="card-container"></div>
+      <template class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="" alt="Player Image"/>
+            <div>
+          <div class="card-back">
+            <h3 class="card-name"></h3>
+            <ul>
+              <li class="card-IP">Bullet Point 1</li>
+              <li class="card-ERA">Bullet Point 2</li>
+              <li class="card-WHIP">Bullet Point 3</li>
+              <li class="card-K">Bullet Point 3</li>
+            </ul>
+          </div>
+        </div>
+      </template>
+
     <div class="footer">
       <button onclick="quoteAlert();">Get A Quote!</button>
       <button onclick="removeLastCard();">Remove A Card!</button>
     </div>
+    <script type="text/javascript" src="scripts.js"></script>
   </body>
 </html>

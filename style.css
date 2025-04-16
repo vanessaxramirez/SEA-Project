@@ -2,6 +2,138 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif; /* Set a generic font */
+  background-color: #f4f4f4; /* Light background to contrast the blue elements */
+}
+
+.main-header {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-bottom: 10px;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+  font-size: 8em;
+  font-family: "Roboto";
+  font-weight: normal;
+  color: dodgerblue; /* Dodger Blue color */
+}
+
+#search-bar {
+  padding: 12px;
+  font-size: 16px;
+  width: 80%;
+  margin: 20px auto;
+  display: block;
+  border: 2px solid dodgerblue; /* Dodger Blue border for the search bar */
+  border-radius: 5px;
+  background-color: white;
+  color: #333;
+}
+
+#search-bar:focus {
+  border-color: #0066cc; /* Darker blue when focused */
+  outline: none; /* Remove the default outline on focus */
+}
+
+#card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow cards to wrap to next line */
+  margin: 20px;
+}
+
+.card {
+  width: 300px;
+  border: 1px solid dodgerblue; /* Dodger Blue border for cards */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin: 15px;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift the card on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0; /* Round the top corners of the image */
+}
+
+.card h2 {
+  font-size: 20px;
+  color: dodgerblue; /* Use Dodger Blue for card titles */
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.card .stat {
+  font-size: 14px;
+  color: #333;
+}
+
+.card-content {
+  padding: 20px;
+  font-family: "Verdana", sans-serif;
+  color: #333;
+}
+
+.card-content h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+
+button {
+  text-align: center;
+  background-color: dodgerblue; /* Dodger Blue button background */
+  border: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  border-radius: 25px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0066cc; /* Darker blue when hovering over the button */
+}
+
+button:active {
+  background-color: #004999; /* Even darker blue on button press */
+}
+
+button:focus {
+  outline: none;
+}
+
+
+
+
+
+/* html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .main-header {
@@ -23,6 +155,39 @@ body {
   justify-content: center;
   margin: 20px;
 }
+
+#search-bar {
+  padding: 8px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+Basic styling for the player cards
+.card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px;
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card h2 {
+  font-size: 18px;
+}
+
+.card p 
+{
+  font-size: 14px;
+}
+
+
 
 .card {
   width: 300px;
@@ -67,4 +232,4 @@ button {
   font-size: 22px;
   cursor: pointer;
   margin: 5px;
-}
+} */
