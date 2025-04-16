@@ -1,28 +1,3 @@
-/*
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- *
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your
- *    browser and make sure you can see that change.
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- *
- */
-
 const SHOHEI_OHTANI_URL =
   "https://i.pinimg.com/736x/b2/6e/32/b26e320a4ac1c2f7cd0b0d8283eb70fc.jpg";
 const FREDDIE_FREEMAN_URL =
@@ -201,8 +176,6 @@ let players = [
 ]
 
 
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
 window.onload = function() 
 {
   console.log("Window loaded!");
@@ -215,16 +188,12 @@ window.onload = function()
   const filterDropdown = document.getElementById("filter-dropdown");
   console.log("Filter dropdown found:", filterDropdown);
 
-  // Listen for change event on the dropdown
-  filterDropdown.addEventListener("change", toggleSort); // Listen to the change event
+  filterDropdown.addEventListener("change", toggleSort);
   
   showCards();
 }
 
-// Track the sorting state (true means descending, false means ascending)
-let isSortedDescending = true;
 
-// This function adds cards the page to display the data in the array
 function showCards() 
 {
   const cardContainer = document.getElementById("card-container");
@@ -242,7 +211,7 @@ function showCards()
       let player = players[i];
       console.log('Creating card for batter:', player.name);
     
-      let nextCard = battersTemplate.content.cloneNode(true); // Copy the template card
+      let nextCard = battersTemplate.content.cloneNode(true); 
       editCardContent(
         nextCard, 
         player.name, 
@@ -294,7 +263,7 @@ function editCardContent(card, name, imageURL, position, stat1, stat2, stat3, st
   }
 }
 
-// Add search functionality
+
 document.getElementById("search-bar").addEventListener("input", function () 
 {
   const query = this.value.toLowerCase();
@@ -340,9 +309,9 @@ function toggleSort()
 
   // Sort the players based on AVG
   if (sortValue === "desc") {
-    players.sort((a, b) => b.AVG - a.AVG); // Sort in descending order
+    players.sort((a, b) => b.AVG - a.AVG); 
   } else {
-    players.sort((a, b) => a.AVG - b.AVG); // Sort in ascending order
+    players.sort((a, b) => a.AVG - b.AVG); 
   }
 
   // Re-render the cards after sorting
