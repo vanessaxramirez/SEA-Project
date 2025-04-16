@@ -332,31 +332,34 @@ let pitchers = [
 // you should use more than just an array of strings to store it all.
 
 // This function adds cards the page to display the data in the array
-function showCards() {
+function showCards() 
+{
+  const battersTemplate = document.getElementById("batters-template");
+  const pitchersTemplate = document.getElementById("pitchers-template");
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
+
 
   // Iteraties through the hitters
   for (let i = 0; i < players.length; i++) 
     {
       let player = players[i];
-      
-      const nextCard = templateCard.cloneNode(true); // Copy the template card
-      editCardContent(nextCard,player.name, player.image, player.position, player.AVG, player.OBP, player.SLG, player.OPS);
-      cardContainer.appendChild(nextCard); // Add new card to the container
+    
+      let nextCard = pitchersTemplate.content.cloneNode(true); // Copy the template card
+      editCardContent(nextCard, player.name, player.image, player.position, player.AVG, player.OBP, player.SLG, player.OPS);
+      cardContainer.appendChild(nextCard);
     }
 
-  // Iterates through the pitchers - different format
-  for (let i = 0; i < pitchers.length; i++) 
+  for (let i = 0; i < pitchers.length; i++)
     {
       let pitcher = pitchers[i];
 
-      const nextCard = templateCard.cloneNode(true); // Copy the template card
-      editCardContent(nextCard, pitcher.name, pitcher.image, pitcher.position, pitcher.ERA, pitcher.WHIP, pitcher.K, pitcher.IP);
-      cardContainer.appendChild(nextCard); // Add new card to the container
+      let nextCard = pitchersTemplate.content.cloneNode(true); // Copy the template card
+      editCardContent(nextCard, pitcher.name, pitcher.image, pitcher.position, pitcher.IP, pitcher.ERA, pitcher.WHIP, pitcher.K);
+      cardContainer.appendChild(nextCard);
     }
-  }
+}
+
 
   // This function will fill the template card with the player's/pitcher's data
 function editCardContent(card, name, image, position, stat1, stat2, stat3, stat4) 
