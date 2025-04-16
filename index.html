@@ -19,44 +19,17 @@
 
     <div id="card-container"></div>
     <!-- Template for batters -->
-      <template id = "batters-template" class="card">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="" alt="Player Image"/>
-          </div>
-          <div class="card-back">
-            <h3 class="card-name"></h3>
-            <ul>
-              <li class="card-name"> data-stat="Name"></span></li>
-              <li class="card-position"> data-stat="Position"></span></li>
-              <li class="card-AVG"> data-stat="AVG"></span></li>
-              <li class="card-OBP"> data-stat="OBP"></span></li>
-              <li class="card-SLG"> data-stat="SLG"></span></li>
-              <li class="card-OPS"> data-stat="OPS"></span></li>
-            </ul>
-          </div>
-      </template>
-    <!-- Template for pitchers -->
-      <template id = "pitchers-template" class="card">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="" alt="Player Image"/>
-            <div>
-          <div class="card-back">
-            <h3 class="card-name"></h3>
-            <ul>
-              <li class="card-IP"> data-stat="IP"></span></li>
-              <li class="card-ERA"> data-stat="ERA"></span></li>
-              <li class="card-WHIP"> data-stat="WHIP"></span></li>
-              <li class="card-K"> data-stat="K"></span></li>
-            </ul>
-          </div>
-      </template>
-
-    <!-- <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button> -->
-    <!-- </div> -->
+    <template id="batters-template">
+      <div class="card">
+        <img class= "card-img" alt = "Player Photo" />
+        <h3 class="card-name"></h3>
+        <p class="card-position"></p>
+        <p><span class = "card-AVG" ></span></p>
+        <p><span class = "card-OBP" ></span></p>
+        <p><span class = "card-SLG" ></span></p>
+        <p><span class = "card-OPS" ></span></p>
+      </div>
+    </template>
     <script type="text/javascript" src="scripts.js"></script>
   </body>
 </html>

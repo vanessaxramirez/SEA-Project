@@ -200,149 +200,32 @@ let players = [
   }
 ]
 
-let pitchers = [
-  {
-    name: "Yoshinobu Yamamoto",
-    position: "Pitcher",
-    IP: 22.0,
-    ERA: 1.23,
-    WHIP: 0.91,
-    K: 28,
-    image: YOSHINOBU_YAMAMOTO_URL
-  },
-  {
-    name: "Blake Treinen",
-    position: "Pitcher",
-    IP: 8.0,
-    ERA: 3.38,
-    WHIP: 1.38,
-    K: 10,
-    image: BLAKE_TREINEN_URL
-  },
-  {
-    name: "Roki Sasaki",
-    position: "Pitcher",
-    IP: 13.2,
-    ERA: 3.29,
-    WHIP: 1.76,
-    K: 12,
-    image: ROKI_SASAKI_URL
-  },
-  {
-    name: "Tyler Glasnow",
-    position: "Pitcher",
-    IP: 13.0,
-    ERA: 4.85,
-    WHIP: 0.76,
-    K: 14,
-    image: TYLER_GLASNOW_URL
-  },
-  {
-    name: "Dustin May",
-    position: "Pitcher",
-    IP: 17.0,
-    ERA: 1.06,
-    WHIP: 0.91,
-    K: 28,
-    image: DUSTIN_MAY_URL
-  },
-  {
-    name: "Alex Vesia",
-    position: "Pitcher",
-    IP: 9.0,
-    ERA: 3.0,
-    WHIP: 1.33,
-    K: 14,
-    image: ALEX_VESIA_URL
-  },
-  {
-    name: "Jack Dreyer",
-    position: "Pitcher",
-    IP: 10.1,
-    ERA: 0.87,
-    WHIP: 0.68,
-    K: 12,
-    image: JACK_DREYER_URL
-  },
-  {  name: "Ben Casparius",
-    position: "Pitcher",
-    IP: 8.1,
-    ERA: 2.16,
-    WHIP: 1.56,
-    K: 12,
-    image: BEN_CASPARIUS_URL
-  },
-  {
-    name: "Anthony Banda",
-    position: "Pitcher",
-    IP: 7.1,
-    ERA: 4.91,
-    WHIP: 1.09,
-    K: 7,
-    image: ANTHONY_BANDA_URL
-  },
-  {
-    name: "Luis Garcia",
-    position: "Pitcher",
-    IP: 8.2,
-    ERA: 7.27,
-    WHIP: 1.96,
-    K: 7,
-    image: LUIS_GARCIA_URL
-  },
-  {
-    name: "Tanner Scott",
-    position: "Pitcher",
-    IP: 9.0,
-    ERA: 3.0,
-    WHIP: 0.89,
-    K: 7,
-    image: TANNER_SCOTT_URL
-  },
-  {
-    name: "Blake Snell",
-    position: "Pitcher",
-    IP: 9.0,
-    ERA: 2.0,
-    WHIP: 2.0,
-    K: 4,
-    image: BLAKE_SNELL_URL
-  },
-  {
-    name: "Landon Knack",
-    position: "Pitcher",
-    IP: 4.1,
-    ERA: 10.38,
-    WHIP: 2.08,
-    K: 5,
-    image: LANDON_KNACK_URL
-  },
-  {
-    name: "Kirby Yates",
-    position: "Pitcher",
-    IP: 8.1,
-    ERA: 2.16,
-    WHIP: 0.84,
-    K: 15,
-    image: KIRBY_YATES_URL
-  }
-];
 
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
-window.onload = showCards();
+window.onload = function() 
+{
+  console.log("Window loaded!");
+  const cardContainer = document.getElementById("card-container");
+  console.log("Card container found:", cardContainer);
+  
+  const battersTemplate = document.getElementById("batters-template");
+  console.log("Batters template found:", battersTemplate);
+  
+  showCards();
+}
+
 // This function adds cards the page to display the data in the array
 function showCards() 
 {
   const cardContainer = document.getElementById("card-container");
   const battersTemplate = document.getElementById("batters-template");
-  const pitchersTemplate = document.getElementById("pitchers-template");
+  console.log("Script is running");
   
   cardContainer.innerHTML = "";
 
   console.log('Showing cards...');
   console.log('Players array:', players);
-  console.log('Pitchers array:', pitchers);
 
   // Iteraties through the hitters
   for (let i = 0; i < players.length; i++) 
@@ -351,122 +234,58 @@ function showCards()
       console.log('Creating card for batter:', player.name);
     
       let nextCard = battersTemplate.content.cloneNode(true); // Copy the template card
-      editCardContent(nextCard, player.name, player.image, player.position, player.AVG, player.OBP, player.SLG, player.OPS);
-      cardContainer.appendChild(nextCard);
-    }
-
-  for (let i = 0; i < pitchers.length; i++)
-    {
-      let pitcher = pitchers[i];
-      console.log('Creating card for pitcher:', pitcher.name);
-
-      let nextCard = pitchersTemplate.content.cloneNode(true); // Copy the template card
-      editCardContent(nextCard, pitcher.name, pitcher.image, pitcher.position, pitcher.IP, pitcher.ERA, pitcher.WHIP, pitcher.K);
+      editCardContent(
+        nextCard, 
+        player.name, 
+        player.image, 
+        player.position, 
+        player.AVG, 
+        player.OBP, 
+        player.SLG, 
+        player.OPS);
       cardContainer.appendChild(nextCard);
     }
 }
 
-
-  // This function will fill the template card with the player's/pitcher's data
-function editCardContent(card, name, image, position, stat1, stat2, stat3, stat4) {
-  // Set the player's name
-  const cardName = card.querySelector('.card-name');
-  if (cardName)
-  {
-    cardName.textContent = name;
+function editCardContent(card, name, imageURL, position, stat1, stat2, stat3, stat4) 
+{
+  const nameElement = card.querySelector('.card-name');
+  if (nameElement) {
+    nameElement.textContent = name;
+  }
+  
+  const imageElement = card.querySelector('img');
+  if (imageElement) {
+    imageElement.src = imageURL;
+    imageElement.alt = name;
   }
 
-  // Set the player's image
-  const cardImage = card.querySelector('.card-front img');
-  if (cardImage)
-  {
-    cardImage.src = image;
+  const positionElement = card.querySelector('.card-position');
+  if (positionElement) {
+    positionElement.textContent = "Position: " + position;
+  }
+  const statAVG = card.querySelector('.card-AVG');
+  if (statAVG) {
+    statAVG.textContent = "AVG: " + stat1;
   }
 
-  // Set the player's position
-  const cardPosition = card.querySelector('.card-position');
-  if (cardPosition)
-  {
-      cardPosition.textContent = position;
+  const statOBP = card.querySelector('.card-OBP');
+  if (statOBP) {
+    statOBP.textContent = "OBP: " + stat2;
   }
 
-  // Check if we're dealing with batters or pitchers since they're in different arrays
-  const isPitcher = card.querySelector('.card-IP') !== null;
-
-  if (isPitcher) 
-  {
-    // Set pitcher stats
-    const statIP = card.querySelector('.card-IP');
-    if (statIP) 
-    {
-      statIP.textContent = stat1;
-    }
-
-    const statERA = card.querySelector('.card-ERA');
-    if (statERA) 
-    {
-      statERA.textContent = stat2;
-    }
-
-    const statWHIP = card.querySelector('.card-WHIP');
-    if (statWHIP) 
-    {
-      statWHIP.textContent = stat3;
-    }
-
-    const statK = card.querySelector('.card-K');
-    if (statK) 
-    {   
-      statK.textContent = stat4;
-    }
+  const statSLG = card.querySelector('.card-SLG');
+  if (statSLG) {
+    statSLG.textContent = "SLG: " +stat3;
   }
-  else 
-  {
-    // Set batter stats
-    const statAVG = card.querySelector('.card-AVG');
-    if (statAVG) 
-    {
-      statAVG.textContent = stat1;
-    }
 
-    const statOBP = card.querySelector('.card-OBP');
-    if (statOBP) 
-    {
-      statOBP.textContent = stat2;
-    }
-
-    const statSLG = card.querySelector('.card-SLG');
-    if (statSLG) 
-    {
-      statSLG.textContent = stat3;
-    }
-
-    const statOPS = card.querySelector('.card-OPS');
-    if (statOPS) 
-    {
-      statOPS.textContent = stat4;
-    }
+  const statOPS = card.querySelector('.card-OPS');
+  if (statOPS) {
+    statOPS.textContent = "OPS: " + stat4;
   }
 }
-
-
-// function editCardContent(card, newTitle, newImageURL) {
-//   card.style.display = "block";
-
-//   const cardHeader = card.querySelector("h2");
-//   cardHeader.textContent = newTitle;
-
-//   const cardImage = card.querySelector("img");
-//   cardImage.src = newImageURL;
-//   cardImage.alt = newTitle + " Poster";
-
-//   // You can use console.log to help you debug!
-//   // View the output by right clicking on your website,
-//   // select "Inspect", then click on the "Console" tab
-//   console.log("new card:", newTitle, "- html: ", card);
-// }
-
-// This calls the addCards() function when the page is first loaded
+// This function will fill the template card with the player's/pitcher's data
+//is calls the addCards() function when the page is first loaded
 // document.addEventListener("DOMContentLoaded", showCards);
 
 // function quoteAlert() {
