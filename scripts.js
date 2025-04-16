@@ -330,22 +330,27 @@ let pitchers = [
 
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
-
+window.onload = showCards();
 // This function adds cards the page to display the data in the array
 function showCards() 
 {
+  const cardContainer = document.getElementById("card-container");
   const battersTemplate = document.getElementById("batters-template");
   const pitchersTemplate = document.getElementById("pitchers-template");
-  const cardContainer = document.getElementById("card-container");
+  
   cardContainer.innerHTML = "";
 
+  console.log('Showing cards...');
+  console.log('Players array:', players);
+  console.log('Pitchers array:', pitchers);
 
   // Iteraties through the hitters
   for (let i = 0; i < players.length; i++) 
     {
       let player = players[i];
+      console.log('Creating card for batter:', player.name);
     
-      let nextCard = pitchersTemplate.content.cloneNode(true); // Copy the template card
+      let nextCard = battersTemplate.content.cloneNode(true); // Copy the template card
       editCardContent(nextCard, player.name, player.image, player.position, player.AVG, player.OBP, player.SLG, player.OPS);
       cardContainer.appendChild(nextCard);
     }
@@ -353,7 +358,8 @@ function showCards()
   for (let i = 0; i < pitchers.length; i++)
     {
       let pitcher = pitchers[i];
-
+      console.log('Creating card for pitcher:', pitcher.name);
+s
       let nextCard = pitchersTemplate.content.cloneNode(true); // Copy the template card
       editCardContent(nextCard, pitcher.name, pitcher.image, pitcher.position, pitcher.IP, pitcher.ERA, pitcher.WHIP, pitcher.K);
       cardContainer.appendChild(nextCard);
@@ -362,18 +368,48 @@ function showCards()
 
 
   // This function will fill the template card with the player's/pitcher's data
-function editCardContent(card, name, image, position, stat1, stat2, stat3, stat4) 
-{
-  card.querySelector(".player-name").textContent = name;
-  card.querySelector(".player-position").textContent = position;
-  card.querySelector(".player-image").src = image;
-
-  // Insert stats into the card
-  card.querySelector(".stat1").textContent = stat1;
-  card.querySelector(".stat2").textContent = stat2;
-  card.querySelector(".stat3").textContent = stat3;
-  card.querySelector(".stat4").textContent = stat4;
-}
+  function editCardContent(card, name, image, position, stat1, stat2, stat3, stat4) {
+    // Set the player's name
+    const cardName = card.querySelector('.card-name');
+    cardName.textContent = name;
+  
+    // Set the player's image
+    const cardImage = card.querySelector('.card-front img');
+    cardImage.src = image;
+  
+    // Set the player's position
+    const cardPosition = card.querySelector('.card-position');
+    cardPosition.textContent = position;
+  
+    // Set the player's stats
+    const stat1Element = card.querySelector('.card-AVG'); // For batters, e.g. AVG
+    stat1Element.textContent = stat1;
+  
+    const stat2Element = card.querySelector('.card-OBP'); // For batters, e.g. OBP
+    stat2Element.textContent = stat2;
+  
+    const stat3Element = card.querySelector('.card-SLG'); // For batters, e.g. SLG
+    stat3Element.textContent = stat3;
+  
+    const stat4Element = card.querySelector('.card-OPS'); // For batters, e.g. OPS
+    stat4Element.textContent = stat4;
+  
+    // If it's a pitcher, update other stats (ERA, WHIP, etc.)
+    if (stat1 === undefined) {  // This indicates we're dealing with pitchers
+      const cardIP = card.querySelector('.card-IP'); // For pitchers
+      cardIP.textContent = stat1;
+  
+      const cardERA = card.querySelector('.card-ERA'); // For pitchers
+      cardERA.textContent = stat2;
+  
+      const cardWHIP = card.querySelector('.card-WHIP'); // For pitchers
+      cardWHIP.textContent = stat3;
+  
+      const cardK = card.querySelector('.card-K'); // For pitchers
+      cardK.textContent = stat4;
+    }
+  }
+  
 
 // function editCardContent(card, newTitle, newImageURL) {
 //   card.style.display = "block";

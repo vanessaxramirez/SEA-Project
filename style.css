@@ -37,6 +37,7 @@ body {
   outline: none; /* Remove the default outline on focus */
 }
 
+
 #card-container {
   display: flex;
   justify-content: center;
