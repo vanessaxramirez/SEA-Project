@@ -211,9 +211,18 @@ window.onload = function()
   
   const battersTemplate = document.getElementById("batters-template");
   console.log("Batters template found:", battersTemplate);
+
+  const filterDropdown = document.getElementById("filter-dropdown");
+  console.log("Filter dropdown found:", filterDropdown);
+
+  // Listen for change event on the dropdown
+  filterDropdown.addEventListener("change", toggleSort); // Listen to the change event
   
   showCards();
 }
+
+// Track the sorting state (true means descending, false means ascending)
+let isSortedDescending = true;
 
 // This function adds cards the page to display the data in the array
 function showCards() 
@@ -249,67 +258,94 @@ function showCards()
 
 function editCardContent(card, name, imageURL, position, stat1, stat2, stat3, stat4) 
 {
-  const nameElement = card.querySelector('.card-name');
+  const nameElement = card.querySelector('.card-back .card-name');
   if (nameElement) {
     nameElement.textContent = name;
   }
   
-  const imageElement = card.querySelector('img');
+  const imageElement = card.querySelector('.card-front .card-img');
   if (imageElement) {
     imageElement.src = imageURL;
     imageElement.alt = name;
   }
 
-  const positionElement = card.querySelector('.card-position');
+  const positionElement = card.querySelector('.card-back .card-position');
   if (positionElement) {
     positionElement.textContent = "Position: " + position;
   }
-  const statAVG = card.querySelector('.card-AVG');
+  const statAVG = card.querySelector('.card-back .card-AVG');
   if (statAVG) {
     statAVG.textContent = "AVG: " + stat1;
   }
 
-  const statOBP = card.querySelector('.card-OBP');
+  const statOBP = card.querySelector('.card-back .card-OBP');
   if (statOBP) {
     statOBP.textContent = "OBP: " + stat2;
   }
 
-  const statSLG = card.querySelector('.card-SLG');
+  const statSLG = card.querySelector('.card-back .card-SLG');
   if (statSLG) {
     statSLG.textContent = "SLG: " +stat3;
   }
 
-  const statOPS = card.querySelector('.card-OPS');
+  const statOPS = card.querySelector('.card-back .card-OPS');
   if (statOPS) {
     statOPS.textContent = "OPS: " + stat4;
   }
 }
-// This function will fill the template card with the player's/pitcher's data
-//is calls the addCards() function when the page is first loaded
-// document.addEventListener("DOMContentLoaded", showCards);
 
-// function quoteAlert() {
-//   console.log("Button Clicked!");
-//   alert(
-//     "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-//   );
-// }
+// Add search functionality
+document.getElementById("search-bar").addEventListener("input", function () 
+{
+  const query = this.value.toLowerCase();
 
-// document.getElementById("search-bar").addEventListener("input", function () 
-// {
-//   const query = this.value.toLowerCase(); // Get the search query and convert to lowercase
+  const filteredPlayers = players.filter(player =>
+    player.name.toLowerCase().includes(query)
+  );
 
-//   const filteredPlayers = players.filter((player) =>
-//     player.name.toLowerCase().includes(query)
-//   );
+  showFilteredCards(filteredPlayers);
+}
+);
 
-//   // Show filtered cards
-//   showCards(filteredPlayers);
-// }
-// );
+function showFilteredCards(filteredArray) 
+{
+  const cardContainer = document.getElementById("card-container");
+  const battersTemplate = document.getElementById("batters-template");
 
+  cardContainer.innerHTML = "";
 
-// function removeLastCard() {
-//   titles.pop(); // Remove last item in titles array
-//   showCards(); // Call showCards again to refresh
-// }
+  for (let i = 0; i < filteredArray.length; i++) 
+  {
+    let player = filteredArray[i];
+    let nextCard = battersTemplate.content.cloneNode(true);
+    editCardContent(
+      nextCard,
+      player.name,
+      player.image,
+      player.position,
+      player.AVG,
+      player.OBP,
+      player.SLG,
+      player.OPS
+    );
+    cardContainer.appendChild(nextCard);
+  }
+}
+
+// This function toggles between highest to lowest and lowest to highest sort
+function toggleSort() 
+{
+  const filterDropdown = document.getElementById("filter-dropdown");
+  const sortValue = filterDropdown.value; // Get the selected value (asc or desc)
+
+  // Sort the players based on AVG
+  if (sortValue === "desc") {
+    players.sort((a, b) => b.AVG - a.AVG); // Sort in descending order
+  } else {
+    players.sort((a, b) => a.AVG - b.AVG); // Sort in ascending order
+  }
+
+  // Re-render the cards after sorting
+  showCards();
+}
+

@@ -14,22 +14,32 @@
       <div class = "header" >
         <h1> 2025 Active Roster for the LA Dodgers </h1>
         <input type="text" id="search-bar" placeholder="Search for a player..." />
+        <select id="filter-dropdown">
+          <option value="desc">Sort by AVG: Highest -> Lowest</option>
+          <option value="asc">Sort by AVG: Lowest -> Highest</option>
+        </select>
       </div>
     </header>
 
     <div id="card-container"></div>
     <!-- Template for batters -->
-    <template id="batters-template">
-      <div class="card">
-        <img class= "card-img" alt = "Player Photo" />
-        <h3 class="card-name"></h3>
-        <p class="card-position"></p>
-        <p><span class = "card-AVG" ></span></p>
-        <p><span class = "card-OBP" ></span></p>
-        <p><span class = "card-SLG" ></span></p>
-        <p><span class = "card-OPS" ></span></p>
+    <template id = "batters-template">
+      <div class = "card">
+        <div class = "card-inner">
+          <div class = "card-front">
+            <img class = "card-img" alt = "Player Photo" />
+          </div>
+          <div class = "card-back">
+            <h3 class = "card-name"></h3>
+            <p class = "card-position"></p>
+            <p><span class = "card-AVG" ></span></p>
+            <p><span class = "card-OBP" ></span></p>
+            <p><span class = "card-SLG" ></span></p>
+            <p><span class = "card-OPS" ></span></p>
+          </div>
+        </div>
       </div>
     </template>
-    <script type="text/javascript" src="scripts.js"></script>
+  <script type = "text/javascript" src = "scripts.js"></script>
   </body>
 </html>
